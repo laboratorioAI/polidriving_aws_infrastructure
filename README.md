@@ -1,6 +1,6 @@
 # AWS Infrastructure
 
-![AWS infrastructure](aws_infrastructure_prevention_system.png)
+<img src="aws_infrastructure_prevention_system.png" width="800"/>
 
 # Publication
 
