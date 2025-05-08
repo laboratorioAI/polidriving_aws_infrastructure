@@ -1,5 +1,7 @@
 # AWS Infrastructure
 
+Deploying an API Rest over Amazon Web Services (AWS) requires the configuration of S3, ECR, Lambda, and API Gateway services. The following image presents the infrastructure design for the traffic accident risk level prediction system.
+
 <img src="aws_infrastructure_prevention_system.png" width="800"/>
 
 # Publication
