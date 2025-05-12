@@ -128,18 +128,18 @@ The following image presents the infrastructure design for the processing agent,
 1. En el servicio S3, selecciona la opción **Buckets** en el panel izquierdo.
 2. Haz clic en **Crear bucket**.
 
-    ![image.png](img_readme/image.png)
+    ![image.png](imgages/image.png)
 
     - Configura el bucket con un nombre único (este nombre será usado en el script de Lambda).
     - Deja las configuraciones por defecto.
 
 3. Sube el archivo del modelo (`model.joblib`).
 
-    ![image.png](img_readme/image%201.png)
+    ![image.png](images/image_1.png)
 
 4. Edita el archivo `inference.py` para actualizar el nombre del bucket.
 
-    ![image.png](img_readme/image%202.png)
+    ![image.png](images/image_2.png)
 
 ---
 
@@ -147,15 +147,15 @@ The following image presents the infrastructure design for the processing agent,
 
 1. En el servicio ECR, selecciona **Repositorios** en el panel izquierdo y haz clic en **Crear repositorio**.
 
-    ![image.png](img_readme/image%203.png)
+    ![image.png](images/image_3.png)
 
 2. Asigna un nombre al repositorio y selecciona la opción **Mutable**.
 
-    ![image.png](img_readme/image%204.png)
+    ![image.png](images/image_4.png)
 
 3. Toma nota de la URL del repositorio, ya que será necesaria para los siguientes pasos.
 
-    ![image.png](img_readme/image%205.png)
+    ![image.png](images/image_5.png)
 
 ### Preparar el repositorio
 
@@ -194,19 +194,19 @@ The following image presents the infrastructure design for the processing agent,
 
 1. En el servicio Lambda, selecciona **Funciones** en el panel izquierdo y haz clic en **Crear función**.
 
-    ![image.png](img_readme/image%206.png)
+    ![image.png](images/image_6.png)
 
 2. Selecciona la opción **Imagen de contenedor**, asigna un nombre a la función y haz clic en **Examinar imágenes**.
 
-    ![image.png](img_readme/image%207.png)
+    ![image.png](images/image_7.png)
 
 3. Selecciona la imagen del repositorio creado previamente.
 
-    ![image.png](img_readme/image%209.png)
+    ![image.png](images/image_9.png)
 
 4. Configura la arquitectura como `x86_64` (por defecto) y asigna el rol creado con los permisos necesarios.
 
-    ![image.png](img_readme/image%2011.png)
+    ![image.png](images/image_11.png)
 
 5. En la pestaña **Probar**, crea un evento JSON de prueba y haz clic en **Probar**.
 
@@ -227,19 +227,19 @@ The following image presents the infrastructure design for the processing agent,
     }
     ```
 
-    ![image.png](img_readme/image%2012.png)
+    ![image.png](images/image_12.png)
 
 6. Si obtienes un error, ajusta el tiempo de espera en la pestaña **Configuración**.
 
-    ![image.png](img_readme/image%2015.png)
+    ![image.png](images/image_15.png)
 
     - Incrementa el tiempo de espera a 20 segundos y guarda los cambios.
 
-    ![image.png](img_readme/image%2016.png)
+    ![image.png](images/image_16.png)
 
 7. Vuelve a realizar la prueba. Una vez que funcione correctamente, reduce el tiempo de espera a 3 segundos.
 
-    ![image.png](img_readme/image%2019.png)
+    ![image.png](images/image_19.png)
 
 ---
 
@@ -247,28 +247,28 @@ The following image presents the infrastructure design for the processing agent,
 
 1. En el servicio API Gateway, selecciona **Crear API**.
 
-    ![image.png](img_readme/Servicio_Gateway.png)
+    ![image.png](images/servicio_gateway.png)
 
 2. Configura los parámetros:
     - Tipo de API: **Nueva API**.
     - Nombre de la API.
     - Tipo de punto de conexión: **Regional**.
 
-    ![image.png](img_readme/Crear_API_Gateway.png)
+    ![image.png](images/crear_api_gateway.png)
 
 3. En el menú **Recurso**, selecciona **Crear recurso**.
 
-    ![image.png](img_readme/image%2021.png)
+    ![image.png](images/image_21.png)
 
 4. Crea un método POST y configura los detalles:
     - Tipo de integración: **Función Lambda**.
     - Región y ARN de la función Lambda.
 
-    ![Crear_Metodo_POST.PNG](img_readme/Crear_Metodo_POST.png)
+    ![Crear_Metodo_POST.PNG](images/crear_metodo_post.png)
 
 5. Implementa la API para obtener la URL de invocación.
 
-    ![Deploy_API_Gateway (1).PNG](img_readme/Deploy_API_Gateway_(1).png)
+    ![Deploy_API_Gateway (1).PNG](images/deploy_api_gateway.png)
 
     Ejemplo de URL:
 
@@ -283,7 +283,7 @@ The following image presents the infrastructure design for the processing agent,
 1. Usa **Postman** para probar la API.
 2. Configura el método como POST y pega la URL generada.
 
-    ![image.png](img_readme/image%2022.png)
+    ![image.png](images/image_22.png)
 
 3. En el cuerpo de la solicitud, selecciona **raw** y pega el siguiente input:
 
@@ -291,11 +291,11 @@ The following image presents the infrastructure design for the processing agent,
     {"Input": [[0.5, 2.3, 1.2, 3.4, 0.9, 98, 12.4, 72, 120, -34.6, -58.4, 2, 0]]}
     ```
 
-    ![image.png](img_readme/image%2023.png)
+    ![image.png](images/image_23.png)
 
 4. Asegúrate de que el encabezado tenga `Content-Type: application/json`.
 
-    ![image.png](img_readme/image%2024.png)
+    ![image.png](images/image_24.png)
 
 ---
 
@@ -320,15 +320,15 @@ The following image presents the infrastructure design for the processing agent,
     - Ve a la pestaña **Imagen** de la función Lambda.
     - Selecciona **Implementar nueva imagen**.
 
-      ![image.png](img_readme/image%2026.png)
+      ![image.png](images/image_26.png)
 
     - Guarda los cambios.
 
-      ![image.png](img_readme/image%2027.png)
+      ![image.png](images/image_27.png)
 
     La función se actualizará correctamente.
 
-    ![image.png](img_readme/image%2028.png)
+    ![image.png](images/image_28.png)
 
 # Publication
 
