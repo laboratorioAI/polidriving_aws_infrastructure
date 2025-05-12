@@ -8,7 +8,7 @@ The following image presents the infrastructure design for the processing agent,
 The following subsection presents the manuals for model and database deployment.
 
 ## Manuals
-* [Model deployment in ECR, S3, Lambdaa, and API Gateway](model_deployment.md)
+* [Model deployment in ECR, S3, Lambda, and API Gateway](model_deployment.md)
 * [Database deployment in RS, Lambda, and API Gateway](database_deployment.md)
 
 # Publication
