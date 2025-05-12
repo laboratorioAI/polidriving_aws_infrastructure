@@ -9,7 +9,7 @@ The following subsection presents the manuals for model and database deployment.
 
 ## Manuals
 * [Model deployment in ECR, S3, Lambda, and API Gateway](manuals/model/README.md)
-* [Database deployment in RS, Lambda, and API Gateway](manual/database/README.md)
+* [Database deployment in RS, Lambda, and API Gateway](manuals/database/README.md)
 
 # Publication
 
