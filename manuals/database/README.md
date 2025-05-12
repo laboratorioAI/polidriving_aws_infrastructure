@@ -20,33 +20,33 @@
 ## Creación de la Base de Datos en Amazon RDS
 
 1. Dirígete a la consola de Amazon RDS y haz clic en **"Base de datos"** en el panel izquierdo.  
-    ![image.png](img_readme/image.png)
+    ![image.png](images/image.png)
 
 2. Haz clic en el botón **"Crear base de datos"**.  
-    ![image.png](img_readme/image%201.png)
+    ![image.png](images/image_1.png)
 
 3. Selecciona la opción de **"Creación estándar"** y elige el motor **PostgreSQL**.  
-    ![image.png](img_readme/image%202.png)
+    ![image.png](images/image_2.png)
 
 4. Asigna un nombre como identificador para la base de datos (RDS). Nota: Este no es el nombre de la base de datos que se configurará más adelante.  
-    ![image.png](img_readme/image%203.png)
+    ![image.png](images/image_3.png)
 
 5. Selecciona la opción **Autoadministrado** y crea una contraseña para el acceso.  
-    ![image.png](img_readme/image%204.png)
+    ![image.png](images/image_4.png)
 
 6. En la configuración de la instancia, selecciona el tipo **db.t4g.micro**.  
-    ![image.png](img_readme/image%205.png)
+    ![image.png](images/image_5.png)
 
 7. Configura la opción para que **no se conecte a un recurso EC2**.  
-    ![image.png](img_readme/image%206.png)
+    ![image.png](images/image_6.png)
 
 8. Configura la VPC y marca la opción para hacerla pública. Esto permitirá conectarte para crear tablas y cargar datos.  
-    ![image.png](img_readme/image%207.png)  
+    ![image.png](images/image_7.png)  
     **Nota:** Dentro del grupo de seguridad de la VPC, crea una regla de entrada con el tipo **PostgreSQL**, protocolo **TCP**, puerto **5432**, y origen **cualquier dirección IP**. Esto será necesario para conectarte localmente y posteriormente con la función Lambda.  
-    ![image.png](img_readme/image%208.png)
+    ![image.png](images/image_8.png)
 
 9. En el apartado de **"Configuración adicional"**, especifica el nombre de la base de datos.  
-    ![image.png](img_readme/image%209.png)
+    ![image.png](images/image_9.png)
 
 10. Haz clic en **"Crear base de datos"** para finalizar.
 
@@ -65,8 +65,8 @@
       - En **Username**, ingresa el usuario que creaste para la base de datos de RDS.
       - En **Password**, ingresa la contraseña configurada.
 4. Haz clic en **Save** para guardar la conexión y conectar **pgAdmin** a tu base de datos en Amazon RDS.  
-    ![image.png](img_readme/image%2010.png)  
-    ![image.png](img_readme/image%2011.png)
+    ![image.png](images/image_10.png)  
+    ![image.png](images/image_11.png)
 
 5. Una vez conectado, abre un script y ejecuta el código correspondiente.
 
@@ -98,7 +98,7 @@ Utiliza la interfaz gráfica de **pgAdmin** para ejecutar los scripts SQL que cr
 ## Modelo Relacional en PlantUML
 
 A continuación, se presenta el modelo relacional generado en PlantUML:  
-![diagrama.png](img_readme/diagrama.png)
+![diagrama.png](images/diagrama.png)
 
 ---
 
@@ -140,33 +140,33 @@ SELECT * FROM accidents_quito LIMIT 10;
 
 1. Navega al directorio `ExtraerDatosServicios/lambdaDats` dentro del repositorio.
 2. Modifica las variables de entorno en el archivo `lambda_function.py` según tu configuración.  
-    ![image.png](img_readme/image%2013.png)
+    ![image.png](images/image_13.png)
 
 3. Empaqueta el contenido del directorio en un archivo ZIP.  
-    ![image.png](img_readme/image%2014.png)
+    ![image.png](images/image_14.png)
 
 4. Crea una nueva función Lambda en la consola de AWS:
     - Selecciona **"Crear desde cero"**.
     - Asigna un nombre a la función.
     - Selecciona **Python 3.13** como entorno de ejecución y arquitectura **x86_64**.  
-      ![image.png](img_readme/image%2015.png)
+      ![image.png](images/image_15.png)
 
 5. Configura el rol correspondiente para la función Lambda.  
-    ![image.png](img_readme/image%2017.png)
+    ![image.png](images/image_17.png)
 
 6. Habilita la VPC y selecciona la subred y el grupo de seguridad que permita tráfico en el puerto **5432**.  
-    ![image.png](img_readme/image%2018.png)
+    ![image.png](images/image_18.png)
 
 7. Carga el archivo ZIP empaquetado previamente.  
-    ![image.png](img_readme/image%2020.png)
+    ![image.png](images/image_20.png)
 
 8. Guarda los cambios y haz clic en **Deploy**.  
-    ![image.png](img_readme/image%2022.png)
+    ![image.png](images/image_22.png)
 
 9. Crea un evento JSON para probar la función y haz clic en **Probar**.  
-    ![image.png](img_readme/image%2024.png)  
+    ![image.png](images/image%2024.png)  
     La salida esperada debe ser similar a la siguiente:  
-    ![image.png](img_readme/image%2025.png)
+    ![image.png](images/image_25.png)
 
 ---
 
@@ -174,28 +174,28 @@ SELECT * FROM accidents_quito LIMIT 10;
 
 1. En el servicio API Gateway, selecciona **Crear API**.
 
-    ![Servicio_Gateway.png](img_readme/Servicio_Gateway.png)
+    ![Servicio_Gateway.png](images/servicio_gateway.png)
 
 2. Configura los parámetros:
     - Tipo de API: **Nueva API**.
     - Nombre de la API.
     - Tipo de punto de conexión: **Regional**.
 
-    ![Crear_API_Gateway.PNG](img_readme/Crear_API_Gateway.png)
+    ![Crear_API_Gateway.PNG](images/crear_api_gateway.png)
 
 3. En el menú **Recurso**, selecciona **Crear recurso**.
 
-    ![image.png](img_readme/image%2026.png)
+    ![image.png](images/image_26.png)
 
 4. Crea un método POST y configura los detalles:
     - Tipo de integración: **Función Lambda**.
     - Región y ARN de la función Lambda.
 
-    ![Crear_Metodo_POST.PNG](img_readme/Crear_Metodo_POST.png)
+    ![Crear_Metodo_POST.PNG](images/crear_metodo_post.png)
 
 5. Implementa la API para obtener la URL de invocación.
 
-    ![Deploy_API_Gateway (1).PNG](img_readme/Deploy_API_Gateway_(1).png)
+    ![Deploy_API_Gateway (1).PNG](images/deploy_api_gateway.png)
 
     Ejemplo de URL:
 
@@ -209,28 +209,28 @@ SELECT * FROM accidents_quito LIMIT 10;
 
 1. En el servicio API Gateway, selecciona **Crear API**.
 
-    ![Servicio_Gateway.png](img_readme/Servicio_Gateway.png)
+    ![Servicio_Gateway.png](images/servicio_gateway.png)
 
 2. Configura los parámetros:
     - Tipo de API: **Nueva API**.
     - Nombre de la API.
     - Tipo de punto de conexión: **Regional**.
 
-    ![Crear_API_Gateway.PNG](img_readme/Crear_API_Gateway.png)
+    ![Crear_API_Gateway.PNG](images/crear_api_gateway.png)
 
 3. En el menú **Recurso**, selecciona **Crear recurso**.
 
-    ![image.png](img_readme/image%2026.png)
+    ![image.png](images/image_26.png)
 
 4. Crea un método POST y configura los detalles:
     - Tipo de integración: **Función Lambda**.
     - Región y ARN de la función Lambda.
 
-    ![Crear_Metodo_POST.PNG](img_readme/Crear_Metodo_POST.png)
+    ![Crear_Metodo_POST.PNG](images/crear_metodo_post.png)
 
 5. Implementa la API para obtener la URL de invocación.
 
-    ![Deploy_API_Gateway (1).PNG](img_readme/Deploy_API_Gateway_(1).png)
+    ![Deploy_API_Gateway (1).PNG](images/deploy_api_gateway.png)
 
     Ejemplo de URL:
 
