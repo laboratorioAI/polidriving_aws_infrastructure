@@ -28,7 +28,7 @@ If you use POLIDriving in your research, please cite it as follows.
 
 # Downloads
 
-The size of POLIDriving is about 150 MB.
+The size of POLIDriving is about 176 MB.
 
 # Contact
 
