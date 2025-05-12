@@ -5,9 +5,7 @@ The following image presents the infrastructure design for the processing agent,
 
 <img src="aws_infrastructure_prevention_system.png" width="800"/>
 
-# Despliegue de Modelo en ECR, S3, Lambda y API Gateway
-
-![Example Image](img_readme/53941014-b7a0-4a86-8a68-14ea9eebec91.png)
+# Model deployment in ECR, S3, Lambda and API Gateway
 
 ## Índice
 
