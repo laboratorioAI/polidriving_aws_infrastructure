@@ -1,6 +1,6 @@
 # Model deployment in ECR, S3, Lambda and API Gateway
 
-## Índice
+## Content
 
 1. [Pasos Previos](#pasos-previos)
 2. [Subir el Modelo a S3](#1-subir-el-modelo-a-s3)
